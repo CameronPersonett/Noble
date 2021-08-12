@@ -1,0 +1,6 @@
+{
+  "block.noble.combustion_engine" : "Combustion Engine",
+  "block.noble.electric_smelter" : "Electric Smelter",
+
+  "itemGroup.noble" : "Noble Items"
+}

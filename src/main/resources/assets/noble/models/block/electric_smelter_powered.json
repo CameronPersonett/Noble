@@ -1,0 +1,11 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "noble:block/machine",
+    "up": "noble:block/machine",
+    "north": "noble:block/electric_smelter_powered_front",
+    "south": "noble:block/machine",
+    "east": "noble:block/machine",
+    "west": "noble:block/machine"
+  }
+}

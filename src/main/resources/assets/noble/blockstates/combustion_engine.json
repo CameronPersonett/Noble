@@ -1,0 +1,51 @@
+{
+  "variants": {
+    "facing=down,powered=false": {
+      "model": "noble:block/combustion_engine",
+      "x": 90
+    },
+    "facing=up,powered=false": {
+      "model": "noble:block/combustion_engine",
+      "x": -90
+    },
+    "facing=north,powered=false": {
+      "model": "noble:block/combustion_engine",
+      "x": -90
+    },
+    "facing=south,powered=false": {
+      "model": "noble:block/combustion_engine",
+      "y": 180
+    },
+    "facing=west,powered=false": {
+      "model": "noble:block/combustion_engine",
+      "y": 270
+    },
+    "facing=east,powered=false": {
+      "model": "noble:block/combustion_engine",
+      "y": 90
+    },
+    "facing=down,powered=true": {
+      "model": "noble:block/combustion_engine_powered",
+      "x": 90
+    },
+    "facing=up,powered=true": {
+      "model": "noble:block/combustion_engine_powered",
+      "x": -90
+    },
+    "facing=north,powered=true": {
+      "model": "noble:block/combustion_engine_powered"
+    },
+    "facing=south,powered=true": {
+      "model": "noble:block/combustion_engine_powered",
+      "y": 180
+    },
+    "facing=west,powered=true": {
+      "model": "noble:block/combustion_engine_powered",
+      "y": 270
+    },
+    "facing=east,powered=true": {
+      "model": "noble:block/combustion_engine_powered",
+      "y": 90
+    }
+  }
+}

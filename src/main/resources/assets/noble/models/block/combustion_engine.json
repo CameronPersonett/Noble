@@ -1,0 +1,11 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "noble:block/machine",
+    "up": "noble:block/combustion_engine_top",
+    "north": "noble:block/combustion_engine",
+    "south": "noble:block/combustion_engine",
+    "east": "noble:block/combustion_engine",
+    "west": "noble:block/combustion_engine"
+  }
+}

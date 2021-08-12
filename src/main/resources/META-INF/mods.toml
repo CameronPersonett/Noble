@@ -1,0 +1,29 @@
+modLoader="javafml"
+loaderVersion="[36,)"
+license="MIT"
+[[mods]] #mandatory
+modId="noble" #mandatory
+version="Beta 0.1" #mandatory
+displayName="Noble" #mandatory
+#updateJSONURL="https://change.me.example.invalid/updates.json" #optional
+#displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
+logoFile="noble.png" #optional
+#credits="Designer and Programmer - Cameron Personett" #optional
+authors="Cameron Personett" #optional
+description='''
+This is a tech mod based around using noble gases to build strong metals to climb the tech tiers.
+
+It was designed to unify the concepts of several mods into one super-mod.
+'''
+[[dependencies.noble]] #optional
+    modId="forge"
+    mandatory=true
+    versionRange="[36,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.noble]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.5,1.17)"
+    ordering="NONE"
+    side="BOTH"

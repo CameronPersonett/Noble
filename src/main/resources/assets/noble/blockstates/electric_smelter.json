@@ -1,0 +1,51 @@
+{
+  "variants": {
+    "facing=down,powered=false": {
+      "model": "noble:block/electric_smelter",
+      "x": 90
+    },
+    "facing=up,powered=false": {
+      "model": "noble:block/electric_smelter",
+      "x": -90
+    },
+    "facing=north,powered=false": {
+      "model": "noble:block/electric_smelter",
+      "x": -90
+    },
+    "facing=south,powered=false": {
+      "model": "noble:block/electric_smelter",
+      "y": 180
+    },
+    "facing=west,powered=false": {
+      "model": "noble:block/electric_smelter",
+      "y": 270
+    },
+    "facing=east,powered=false": {
+      "model": "noble:block/electric_smelter",
+      "y": 90
+    },
+    "facing=down,powered=true": {
+      "model": "noble:block/electric_smelter_powered",
+      "x": 90
+    },
+    "facing=up,powered=true": {
+      "model": "noble:block/electric_smelter_powered",
+      "x": -90
+    },
+    "facing=north,powered=true": {
+      "model": "noble:block/electric_smelter_powered"
+    },
+    "facing=south,powered=true": {
+      "model": "noble:block/electric_smelter_powered",
+      "y": 180
+    },
+    "facing=west,powered=true": {
+      "model": "noble:block/electric_smelter_powered",
+      "y": 270
+    },
+    "facing=east,powered=true": {
+      "model": "noble:block/electric_smelter_powered",
+      "y": 90
+    }
+  }
+}
