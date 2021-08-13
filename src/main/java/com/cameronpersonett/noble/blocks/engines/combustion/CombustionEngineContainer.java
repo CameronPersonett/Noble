@@ -16,15 +16,13 @@ public class CombustionEngineContainer extends AbstractEngineContainer {
     public CombustionEngineContainer(final int windowID, final PlayerInventory inv, final CombustionEngineTileEntity entity) {
         super(windowID, inv, entity, Registration.COMBUSTION_ENGINE_CONTAINER.get());
 
-        //addSlot(new Slot(this.entity.getCapability(, 0, 49, 33));
-
         entity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(h -> {
             addSlot(new SlotItemHandler(h, 0, 49, 33));
         });
     }
 
     public CombustionEngineContainer(final int windowID, final PlayerInventory inv, final PacketBuffer data) {
-        this(windowID, inv, (CombustionEngineTileEntity)AbstractEngineContainer.getTileEntity(inv, data));
+        this(windowID, inv, getTileEntity(inv, data));
     }
 
     protected static CombustionEngineTileEntity getTileEntity(final PlayerInventory inv, final PacketBuffer data) {
@@ -41,20 +39,44 @@ public class CombustionEngineContainer extends AbstractEngineContainer {
         if (slot != null && slot.hasItem()) {
             ItemStack stack = slot.getItem();
             itemstack = stack.copy();
-            if (index == 0) {
-                if (!this.moveItemStackTo(stack, 1, 37, true)) {
+//            if (index == 0) {
+//                if (!this.moveItemStackTo(stack, 1, 37, true)) {
+//                    return ItemStack.EMPTY;
+//                } slot.onQuickCraft(stack, itemstack);
+//            } else {
+//                if (stack.getItem() == Items.DIAMOND) {
+//                    if (!this.moveItemStackTo(stack, 0, 1, false)) {
+//                        return ItemStack.EMPTY;
+//                    }
+//                } else if (index < 28) {
+//                    if (!this.moveItemStackTo(stack, 28, 37, false)) {
+//                        return ItemStack.EMPTY;
+//                    }
+//                } else if (index < 37 && !this.moveItemStackTo(stack, 1, 28, false)) {
+//                    return ItemStack.EMPTY;
+//                }
+//            }
+
+            // OLD - mergeItemStack() - stack, beginIndex, endIndex, reverseOrder
+            // IF reverseOrder, endIndex GETS SUBTRACTED BY 1
+            if (index == 36) {
+                if (!this.moveItemStackTo(stack, 0, 36, true)) {
                     return ItemStack.EMPTY;
                 } slot.onQuickCraft(stack, itemstack);
             } else {
                 if (stack.getItem() == Items.DIAMOND) {
-                    if (!this.moveItemStackTo(stack, 0, 1, false)) {
+                    if (!this.moveItemStackTo(stack, 36, 37, true)) {
+                        if(!this.moveItemStackTo(stack, 27, 35, false)) {
+                            if(!this.moveItemStackTo(stack, 0, 26, false)) {
+                                return ItemStack.EMPTY;
+                            }
+                        }
+                    }
+                } else if (index < 27) {
+                    if (!this.moveItemStackTo(stack, 27, 35, false)) {
                         return ItemStack.EMPTY;
                     }
-                } else if (index < 28) {
-                    if (!this.moveItemStackTo(stack, 28, 37, false)) {
-                        return ItemStack.EMPTY;
-                    }
-                } else if (index < 37 && !this.moveItemStackTo(stack, 1, 28, false)) {
+                } else if (index < 36 && !this.moveItemStackTo(stack, 0, 26, false)) {
                     return ItemStack.EMPTY;
                 }
             }

@@ -1,7 +1,7 @@
 package com.cameronpersonett.noble.net;
 
 import com.cameronpersonett.noble.Noble;
-import com.cameronpersonett.noble.net.messages.MachineEntityUpdateMessage;
+import com.cameronpersonett.noble.net.messages.TileEntityUpdateMessage;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
@@ -13,7 +13,7 @@ public class NobleNet {
             () -> NETWORK_VERSION, version -> version.equals(NETWORK_VERSION), version -> version.equals(NETWORK_VERSION));
 
     public static void init() {
-        CHANNEL.registerMessage(0, MachineEntityUpdateMessage.class, MachineEntityUpdateMessage::encode,
-                MachineEntityUpdateMessage::decode, MachineEntityUpdateMessage::handle);
+        CHANNEL.registerMessage(0, TileEntityUpdateMessage.class, TileEntityUpdateMessage::encode,
+                TileEntityUpdateMessage::decode, TileEntityUpdateMessage::handle);
     }
 }
