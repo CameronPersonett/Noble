@@ -65,6 +65,10 @@ public abstract class AbstractEngineScreen extends ContainerScreen<AbstractEngin
 
         this.font.draw(stack, "Combustion Engine", screenWidth/2-stringWidth/2, 6 + y, 0xffffff);
         this.font.draw(stack, "Energy: " + container.getEnergy(), 6 + x, 68 + y, 0xffffff);
+
+        String progress = container.entity.progress + "%";
+        stringWidth = font.width(progress);
+        this.font.draw(stack, progress, screenWidth/2-stringWidth/2, 57 + y, 0xffffff);
     }
 
     @Override

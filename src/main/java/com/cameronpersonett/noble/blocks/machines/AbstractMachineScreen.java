@@ -67,6 +67,10 @@ public abstract class AbstractMachineScreen extends ContainerScreen<AbstractMach
         int maxEnergy = container.getMaxEnergy();
         int perc = (int)(((double)energy/(double)maxEnergy) * 100d);
         this.font.draw(stack, "Energy: " + energy + " (" + perc + "%)", 6 + x, 68 + y, 0xffffff);
+
+        String progress = container.entity.progress + "%";
+        stringWidth = font.width(progress);
+        this.font.draw(stack, progress, screenWidth/2-stringWidth/2, 57 + y, 0xffffff);
     }
 
     @Override

@@ -4,19 +4,26 @@ import com.cameronpersonett.noble.blocks.machines.AbstractMachineContainer;
 import com.cameronpersonett.noble.core.Registration;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipe;
+import net.minecraft.item.crafting.IRecipeType;
+import net.minecraft.item.crafting.RecipeManager;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
+
+import java.util.Optional;
 
 public class ElectricSmelterContainer extends AbstractMachineContainer {
     public ElectricSmelterContainer(final int windowID, final PlayerInventory inv, final ElectricSmelterTileEntity entity) {
         super(windowID, inv, entity, Registration.ELECTRIC_SMELTER_CONTAINER.get());
 
         entity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(h -> {
-            addSlot(new SlotItemHandler(h, 0, 49, 33));
+            addSlot(new SlotItemHandler(h, 0, 64, 33));
+            addSlot(new SlotItemHandler(h, 1, 92, 33));
         });
     }
 
@@ -28,8 +35,7 @@ public class ElectricSmelterContainer extends AbstractMachineContainer {
         TileEntity entity = AbstractMachineContainer.getTileEntity(inv, data);
         if (entity instanceof ElectricSmelterTileEntity) {
             return (ElectricSmelterTileEntity) entity;
-        }
-        throw new IllegalStateException("Tile entity is incorrect.");
+        } throw new IllegalStateException("Tile entity is incorrect.");
     }
 
     @Override
@@ -42,10 +48,18 @@ public class ElectricSmelterContainer extends AbstractMachineContainer {
             if (index == 36) {
                 if (!this.moveItemStackTo(stack, 0, 36, true)) {
                     return ItemStack.EMPTY;
-                }
-                slot.onQuickCraft(stack, itemstack);
+                } slot.onQuickCraft(stack, itemstack);
             } else {
-                if (stack.getItem() != null) {
+                RecipeManager recipeManager = player.level.getRecipeManager();
+                Inventory input = new Inventory(stack);
+                Optional<FurnaceRecipe> matchingRecipe = recipeManager.getRecipeFor(IRecipeType.SMELTING, input, player.level);
+                if(index == 37) {
+                    if (!this.moveItemStackTo(stack, 27, 35, false)) {
+                        if (!this.moveItemStackTo(stack, 0, 26, false)) {
+                            return ItemStack.EMPTY;
+                        }
+                    }
+                } else if(matchingRecipe.isPresent()) {
                     if (!this.moveItemStackTo(stack, 36, 37, true)) {
                         if (!this.moveItemStackTo(stack, index, index, false)) {
                             if (!this.moveItemStackTo(stack, 27, 35, false)) {

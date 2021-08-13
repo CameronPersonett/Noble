@@ -38,25 +38,25 @@ public class CombustionEngineTileEntity extends AbstractEngineTileEntity {
             return;
         }
 
-        if (counter > 0) {
-            counter--;
-            if (counter <= 0) {
+        if (progress > 0) {
+            progress--;
+            if (progress <= 0) {
                 energyStorage.addEnergy(Config.COMBUSTION_ENGINE_GENERATION);
             } setChanged();
         }
 
-        if (counter <= 0) {
+        if (progress <= 0) {
             ItemStack stack = inventory.getStackInSlot(0);
             if (stack.getItem() == Items.DIAMOND) {
                 inventory.extractItem(0, 1, false);
-                counter = Config.COMBUSTION_ENGINE_TICKS;
+                progress = Config.COMBUSTION_ENGINE_TICKS;
                 setChanged();
             }
         }
 
         BlockState blockState = level.getBlockState(getBlockPos());
-        if (blockState.getValue(BlockStateProperties.POWERED) != counter > 0) {
-            level.setBlock(getBlockPos(), blockState.setValue(BlockStateProperties.POWERED, counter > 0),
+        if (blockState.getValue(BlockStateProperties.POWERED) != progress > 0) {
+            level.setBlock(getBlockPos(), blockState.setValue(BlockStateProperties.POWERED, progress > 0),
                     Constants.BlockFlags.NOTIFY_NEIGHBORS + Constants.BlockFlags.BLOCK_UPDATE);
         } sendOutPower();
     }

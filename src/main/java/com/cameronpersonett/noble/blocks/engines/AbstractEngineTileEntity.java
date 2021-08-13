@@ -5,8 +5,6 @@ import com.cameronpersonett.noble.core.Config;
 import com.cameronpersonett.noble.tools.CustomEnergyStorage;
 import net.minecraft.block.BlockState;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
@@ -20,7 +18,7 @@ import net.minecraftforge.energy.IEnergyStorage;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class AbstractEngineTileEntity extends TileEntity implements ITickableTileEntity {
-    protected int counter;
+    protected int progress;
     protected CustomEnergyStorage energyStorage = createEnergy();
 
     protected LazyOptional<IEnergyStorage> energy = LazyOptional.of(() -> energyStorage);

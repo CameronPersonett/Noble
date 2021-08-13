@@ -16,7 +16,9 @@ import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
 
 public abstract class AbstractMachineTileEntity extends TileEntity implements ITickableTileEntity {
-    protected int counter;
+    protected int progress;
+    protected int energyUsagePerProgress;
+
     protected CustomEnergyStorage energyStorage = createEnergy();
     protected LazyOptional<IEnergyStorage> energy = LazyOptional.of(() -> energyStorage);
 
